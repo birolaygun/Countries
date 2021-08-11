@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
+import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 
 export default function App() {
   const [countries, setCountries] = useState([]);
@@ -17,17 +18,17 @@ export default function App() {
       <h1>Countries</h1>
       {countries.map((country) => {
         return (
-          <div key={country.name}>
-            <h3>{country.name}</h3>
-            <h4>{country.capital}</h4>
-            <p>
-              <img
-                src={country.flag}
-                alt={country.name}
-                style={{ width: "100px" }}
-              />
-            </p>
-          </div>
+          <Card
+            className="mx-auto my-2"
+            style={{ maxWidth: "300px" }}
+            key={country.name}
+          >
+            <CardImg top src={country.flag} alt={country.name} />
+            <CardBody style={{ backgroundColor: " rgb(240, 240, 240)" }}>
+              <CardTitle tag="h5">{country.name}</CardTitle>
+              <CardText>Başkent: {country.capital}</CardText>
+            </CardBody>
+          </Card>
         );
       })}
     </div>
