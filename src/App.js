@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./styles.css";
+import axios from "axios";
 
-function App() {
+export default function App() {
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.eu/rest/v2/all")
+      .then((response) => setCountries(response.data))
+      .catch((error) => console.log({ error }));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Countries</h1>
+      {countries.map((country) => {
+        return (
+          <div key={country.name}>
+            <h3>{country.name}</h3>
+            <h4>{country.capital}</h4>
+            <p>
+              <img
+                src={country.flag}
+                alt={country.name}
+                style={{ width: "100px" }}
+              />
+            </p>
+          </div>
+        );
+      })}
     </div>
   );
 }
-
-export default App;
