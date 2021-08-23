@@ -2,3 +2,17 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.başlık {
+  background-color: orange;
+color: rgb(161, 0, 0)  ;
+width: 300px;
+margin-left: auto;
+margin-right: auto;
+border-radius: 15px;
+}
+
+.name {
+  color:black;
+  text-decoration: aqua;
+}
