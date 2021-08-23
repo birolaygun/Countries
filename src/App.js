@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 import { connect } from "react-redux";
 import { getCountries } from "./actions";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -34,25 +33,13 @@ const App = (props) => {
                       props.countries.ülke = props.countries.countries.find(
                         (item) => item.alpha3Code === props.countries.geçici
                       );
-
-                      console.log(props.countries.geçici);
-
-                      console.log(props.countries);
+                      console.log(props.countries.ülke);
                     }}
                     to={`/${country.alpha3Code}`}
                   >
-                    <Card
-                      className="mx-auto my-2"
-                      style={{ maxWidth: "300px" }}
-                    >
-                      <CardBody
-                        style={{ backgroundColor: " rgb(240, 240, 240)" }}
-                      >
-                         <h3 className=" name ">
-                           {country.name}  
-                        </h3> 
-                      </CardBody>
-                    </Card>
+                    <div className=" kutu ">
+                      <h3 className=" name ">{country.name}</h3>
+                    </div>
                   </Link>
                 );
               })
